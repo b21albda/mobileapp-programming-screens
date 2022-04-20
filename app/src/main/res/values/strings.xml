@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Screens</string>
+    <string name="create_profile">Create Profile</string>
+    <string name="email_hint">example@gmail.com</string>
+    <string name="name">Name</string>
+    <string name="create_button_text">Create Profile</string>
 </resources>
