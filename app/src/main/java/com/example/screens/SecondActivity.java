@@ -19,13 +19,18 @@ public class SecondActivity extends AppCompatActivity {
             String email = extras.getString("EMAIL");
             String name = extras.getString("NAME");
 
-            statusMsg.setText("Profile created with");
+            if (email.isEmpty() || name.isEmpty()) {
+                statusMsg.setText("Profile could not be created");
+            }
+            else {
+                statusMsg.setText("Profile created with");
 
-            TextView emailView = findViewById(R.id.email);
-            TextView nameView = findViewById(R.id.name);
+                TextView emailView = findViewById(R.id.email);
+                TextView nameView = findViewById(R.id.name);
 
-            emailView.setText("Email: " + email);
-            nameView.setText("Name: " + name);
+                emailView.setText("Email: " + email);
+                nameView.setText("Name: " + name);
+            }
         }
     }
 }
