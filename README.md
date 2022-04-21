@@ -1,39 +1,39 @@
 
 # Rapport
 
-**Skriv din rapport här!**
+Skapade en second activity som visar om en profil har skapats eller inte. Om en profil har skapats visas emailen och namnet som användaren
+tillhandahöll i föregående activity.
 
-_Du kan ta bort all text som finns sedan tidigare_.
-
-## Följande grundsyn gäller dugga-svar:
-
-- Ett kortfattat svar är att föredra. Svar som är längre än en sida text (skärmdumpar och programkod exkluderat) är onödigt långt.
-- Svaret skall ha minst en snutt programkod.
-- Svaret skall inkludera en kort övergripande förklarande text som redogör för vad respektive snutt programkod gör eller som svarar på annan teorifråga.
-- Svaret skall ha minst en skärmdump. Skärmdumpar skall illustrera exekvering av relevant programkod. Eventuell text i skärmdumpar måste vara läsbar.
-- I de fall detta efterfrågas, dela upp delar av ditt svar i för- och nackdelar. Dina för- respektive nackdelar skall vara i form av punktlistor med kortare stycken (3-4 meningar).
-
-Programkod ska se ut som exemplet nedan. Koden måste vara korrekt indenterad då den blir lättare att läsa vilket gör det lättare att hitta syntaktiska fel.
+Nedanstående kod ser till att extras har skickats med och sparar isåfall dem i en sträng
+Koden ser även till att de medskickade extras inte är tomma vilket skulle leda till att en profil inte kan skapas,
+detta meddelas då till användaren. Är extras inte tomma meddelas användaren att en profil blev skapad med emailen och namnet
 
 ```
-function errorCallback(error) {
-    switch(error.code) {
-        case error.PERMISSION_DENIED:
-            // Geolocation API stöds inte, gör något
-            break;
-        case error.POSITION_UNAVAILABLE:
-            // Misslyckat positionsanrop, gör något
-            break;
-        case error.UNKNOWN_ERROR:
-            // Okänt fel, gör något
-            break;
+Bundle extras = getIntent().getExtras();
+    if (extras != null) {
+        String email = extras.getString("EMAIL");
+        String name = extras.getString("NAME");
+
+        if (email.isEmpty() || name.isEmpty()) {
+            statusMsg.setText("Profile could not be created");
+        }
+        else {
+            statusMsg.setText("Profile created with");
+
+            TextView emailView = findViewById(R.id.email);
+            TextView nameView = findViewById(R.id.name);
+
+            emailView.setText("Email: " + email);
+            nameView.setText("Name: " + name);
+        }
     }
-}
 ```
 
 Bilder läggs i samma mapp som markdown-filen.
 
-![](android.png)
+![](input_fields.png)
+![](profile_created.png)
+![](profile_not_created.png)
 
 Läs gärna:
 
